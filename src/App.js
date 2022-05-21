@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import allRoutes from "routes";
 
-function App() {
+const App = () => {
+  const getRoutes = (allRoutes) => {
+    return allRoutes.map((prop, key) => {
+      return (
+        <Route
+          path={prop.layout + prop.path}
+          element={prop.element}
+          key={key}
+        />
+      );
+    });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Navigate to="/app/notes" replace />} />
+        {getRoutes(allRoutes)}
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
