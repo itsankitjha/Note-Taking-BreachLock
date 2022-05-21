@@ -41,6 +41,7 @@ export default function NotesCreater(props) {
     await props.handleAddNote(noteData);
     setTitle("");
     setContent("");
+    setDate("");
     setOpen(false);
     props.handleCloseDialog();
   };
