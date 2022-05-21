@@ -17,8 +17,8 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to="/app/notes" replace />} />
         {getRoutes(allRoutes)}
+        <Route path="/" element={<Navigate to="/app/notes" replace />} />
         <Route
           path="*"
           element={
